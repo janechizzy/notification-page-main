@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Frontend Mentor | Notifications page</title>
+  <style>
+    :root {
+      --white: hsl(0, 0%, 100%);
+      --light-blue: hsl(211, 68%, 95%);
+      --blue: hsl(219, 86%, 32%);
+      --text-dark: hsl(224, 21%, 14%);
+      --text-muted: hsl(219, 14%, 68%);
+      --hover-blue: hsl(219, 81%, 50%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--white);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .badge {
+      background-color: var(--blue);
+      color: var(--white);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      color: var(--hover-blue);
+    }
+
+    .notification {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      padding: 12px;
+      background-color: var(--white);
+      border-radius: 6px;
+      border-bottom: 1px solid #eee;
+      gap: 12px;
+    }
+
+    .notification.unread {
+      background-color: var(--light-blue);
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .notification-text {
+      flex: 1;
+    }
+
+    .notification-text p {
+      font-size: 0.9rem;
+      margin: 2px 0;
+      color: var(--text-dark);
+    }
+
+    .notification-text p:last-child {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .name, .group-name, .post-title {
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .name:hover, .group-name:hover, .post-title:hover {
+      color: var(--hover-blue);
+    }
+
+    .post-title::after {
+      content: '•';
+      color: red;
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    .notification.unread:nth-of-type(2) .notification-text p:first-child::after,
+    .notification.unread:nth-of-type(3) .notification-text p:first-child::after {
+      content: '•';
+      color: red;
+      font-size: 16px;
+      margin-left: 6px;
+    }
+
+    blockquote {
+      margin-top: 8px;
+      padding: 10px;
+      background-color: hsl(210, 36%, 96%);
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    blockquote:hover {
+      background-color: hsl(212, 73%, 53%);
+      color: white;
+      cursor: pointer;
+    }
+
+    .with-image {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comment-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      margin-left: 16px;
+    }
+
+    .attribution {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 40px;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    @media (max-width: 375px) {
+      h1 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .notification {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .with-image {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .comment-image {
+        margin-left: 0;
+      }
+
+      .notification-text p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <span>Notifications <span class="badge">3</span></span>
+      <button class="mark-read-btn">Mark all as read</button>
+    </h1>
+
+    <section class="notification unread">
+      <img class="avatar" src="./assets/images/avatar-mark-webber.webp" alt="Mark Webber" />
+      <div class="notification-text">
+        <p><strong>Mark Webber</strong> reacted to your recent post <span class="post-title">My first tournament today!</span></p>
+        <p>1m ago</p>
+      </div>
+    </section>
+
+    <section class="notification unread">
+      <img class="avatar" src="./assets/images/avatar-angela-gray.webp" alt="Angela Gray" />
+      <div class="notification-text">
+        <p><strong class="name">Angela Gray</strong> followed you</p>
+        <p>5m ago</p>
+      </div>
+    </section>
+
+    <section class="notification unread">
+      <img class="avatar" src="./assets/images/avatar-jacob-thompson.webp" alt="Jacob Thompson" />
+      <div class="notification-text">
+        <p><strong>Jacob Thompson</strong> has joined your group <strong class="group-name">Chess Club</strong></p>
+        <p>1 day ago</p>
+      </div>
+    </section>
+
+    <section class="notification">
+      <img class="avatar" src="./assets/images/avatar-rizky-hasanuddin.webp" alt="Rizky Hasanuddin" />
+      <div class="notification-text">
+        <p><b>Rizky Hasanuddin</b> sent you a private message</p>
+        <p>5 days ago</p>
+        <blockquote>
+          Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="notification">
+      <img class="avatar" src="./assets/images/avatar-kimberly-smith.webp" alt="Kimberly Smith" />
+      <div class="notification-text with-image">
+        <div class="text-content">
+          <p><strong>Kimberly Smith</strong> commented on your picture</p>
+          <p>1 week ago</p>
+        </div>
+        <img class="comment-image" src="./assets/images/image-chess.webp" alt="Chess game" />
+      </div>
+    </section>
+
+    <section class="notification">
+      <img class="avatar" src="./assets/images/avatar-nathan-peterson.webp" alt="Nathan Peterson" />
+      <div class="notification-text">
+        <p><strong>Nathan Peterson</strong> reacted to your recent post <strong>5 end-game strategies to increase your win rate</strong></p>
+        <p>2 weeks ago</p>
+      </div>
+    </section>
+
+    <section class="notification">
+      <img class="avatar" src="./assets/images/avatar-anna-kim.webp" alt="Anna Kim" />
+      <div class="notification-text">
+        <p><strong>Anna Kim</strong> left the group <strong>Chess Club</strong></p>
+        <p>2 weeks ago</p>
+      </div>
+    </section>
+
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">jane-chizzy</a>.
+    </footer>
+  </div>
+
+
+  <script>
+    const markReadBtn = document.querySelector('.mark-read-btn');
+    const badge = document.querySelector('.badge');
+
+    markReadBtn.addEventListener('click', () => {
+      const unreadNotifications = document.querySelectorAll('.notification.unread');
+
+      unreadNotifications.forEach(notification => {
+        notification.classList.remove('unread');
+
+        // Remove red dot if present
+        const firstPara = notification.querySelector('.notification-text p');
+        if (firstPara && firstPara.innerHTML.includes('•')) {
+          firstPara.innerHTML = firstPara.innerHTML.replace('•', '');
+        }
+      });
+
+      badge.textContent = '0';
+    });
+  </script>
+</body>
+</html>
